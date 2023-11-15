@@ -8,6 +8,12 @@ php ../../make_composer_json.php composer.json << EOF
         "yiisoft/yii2": "^2.0",
         "cebe/markdown": "~1.0.0"
     },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true
+        }
+    },
     "repositories": [
         {
             "type": "composer",
