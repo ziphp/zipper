@@ -1,15 +1,12 @@
 {
-    "name": "yiisoft/yii2-composer",
+    "name": "ziphp/zipper",
     "description": "The composer plugin for Yii extension installer",
     "keywords": ["yii2", "composer", "extension installer"],
     "type": "composer-plugin",
     "license": "BSD-3-Clause",
     "support": {
-        "issues": "https://github.com/yiisoft/yii2-composer/issues",
-        "forum": "https://www.yiiframework.com/forum/",
-        "wiki": "https://www.yiiframework.com/wiki/",
-        "irc": "ircs://irc.libera.chat:6697/yii",
-        "source": "https://github.com/yiisoft/yii2-composer"
+        "issues": "https://github.com/ziphp/zipper/issues",
+        "source": "https://github.com/ziphp/zipper"
     },
     "authors": [
         {
@@ -43,7 +40,7 @@
     "extra": {
         "class": "yii\\composer\\Plugin",
         "branch-alias": {
-            "dev-master": "2.0.x-dev"
+            "dev-main": "2.0.x-dev"
         }
     }
 }
