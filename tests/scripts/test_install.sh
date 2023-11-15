@@ -27,4 +27,4 @@ $COMPOSER_BINARY install
 
 test -f vendor/autoload.php || (echo "vendor/autoload.php does not exist!"; exit 1)
 test -f vendor/yiisoft/extensions.php || (echo "vendor/yiisoft/extensions.php does not exist!"; exit 1)
-test -d vendor/yiisoft/yii2 || (echo "vendor/yiisoft/yii2 does not exist!"; exit 1)
+test -d vendor/ziphp/ziphp || (echo "vendor/ziphp/ziphp does not exist!"; exit 1)

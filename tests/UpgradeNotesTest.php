@@ -87,7 +87,7 @@ class UpgradeNotesTest extends TestCase
 
     public function testUpgradeNotes_alpha()
     {
-        $notes = $this->invokeMethod($this->getPlugin(), 'findUpgradeNotes', ['yiisoft/yii2', '2.0.0-alpha']);
+        $notes = $this->invokeMethod($this->getPlugin(), 'findUpgradeNotes', ['ziphp/ziphp', '2.0.0-alpha']);
         $this->assertEquals(<<<STRING
 Upgrade from Yii 2.0.14
 -----------------------
@@ -125,7 +125,7 @@ STRING
 
     public function testUpgradeNotes_fromMajor()
     {
-        $notes = $this->invokeMethod($this->getPlugin(), 'findUpgradeNotes', ['yiisoft/yii2', '2.0.10']);
+        $notes = $this->invokeMethod($this->getPlugin(), 'findUpgradeNotes', ['ziphp/ziphp', '2.0.10']);
         $this->assertEquals(<<<STRING
 Upgrade from Yii 2.0.14
 -----------------------
@@ -153,7 +153,7 @@ STRING
 
     public function testUpgradeNotes_fromMinorWithMinorNotes()
     {
-        $notes = $this->invokeMethod($this->getPlugin(), 'findUpgradeNotes', ['yiisoft/yii2', '2.0.13.1']);
+        $notes = $this->invokeMethod($this->getPlugin(), 'findUpgradeNotes', ['ziphp/ziphp', '2.0.13.1']);
         $this->assertEquals(<<<STRING
 Upgrade from Yii 2.0.14
 -----------------------
@@ -171,7 +171,7 @@ STRING
 
     public function testUpgradeNotes_fromMinorWithoutMinorNotes()
     {
-        $notes = $this->invokeMethod($this->getPlugin(), 'findUpgradeNotes', ['yiisoft/yii2', '2.0.12.1']);
+        $notes = $this->invokeMethod($this->getPlugin(), 'findUpgradeNotes', ['ziphp/ziphp', '2.0.12.1']);
         $this->assertEquals(<<<STRING
 Upgrade from Yii 2.0.14
 -----------------------
