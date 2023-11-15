@@ -29,7 +29,7 @@ $packageComposerJson['dist'] = array(
 
 $rootComposerJson = json_decode($json, true);
 check_json_error($json);
-$rootComposerJson['require']['ziphp/zipper'] = 'dev-test as 2.0.x-dev';
+$rootComposerJson['require']['ziphp/zipper'] = 'dev-test as 6.0.x-dev';
 $rootComposerJson['repositories'][] = array(
     'type' => 'package',
     'package' => $packageComposerJson,
