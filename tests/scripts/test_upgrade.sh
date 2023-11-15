@@ -5,7 +5,7 @@ php ../../make_composer_json.php composer.json << EOF
 {
 
     "require": {
-        "ziphp/ziphp": "dev-main",
+        "ziphp/ziphp": "^5.0",
         "cebe/markdown": "~1.0.0"
     },
     "minimum-stability": "dev",
@@ -31,7 +31,7 @@ php ../../make_composer_json.php composer.json << EOF
 {
 
     "require": {
-        "ziphp/ziphp": "dev-main",
+        "ziphp/ziphp": "^5.0",
         "cebe/markdown": "~1.1"
     },
     "minimum-stability": "dev",
