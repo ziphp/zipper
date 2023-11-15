@@ -40,7 +40,7 @@
     "extra": {
         "class": "yii\\composer\\Plugin",
         "branch-alias": {
-            "dev-main": "2.0.x-dev"
+            "dev-main": "6.0.x-dev"
         }
     }
 }
