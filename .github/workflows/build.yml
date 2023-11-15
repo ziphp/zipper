@@ -59,9 +59,3 @@ jobs:
         run: |
           vendor/bin/phpunit --verbose --coverage-clover=clover.xml --colors=always
           cd tests/scripts && sh run.sh
-
-      - name: Upload code coverage scrutinizer
-        if: matrix.php == '7.4'
-        run: |
-          wget https://scrutinizer-ci.com/ocular.phar
-          php ocular.phar code-coverage:upload --format=php-clover coverage.clover
