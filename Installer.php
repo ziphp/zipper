@@ -216,43 +216,6 @@ class Installer extends LibraryInstaller
         }
     }
 
-    protected function linkBaseYiiFiles()
-    {
-        $yiiDir = $this->vendorDir . '/ziphp/ziphp/framework';
-        if (!file_exists($yiiDir)) {
-            mkdir($yiiDir, 0777, true);
-        }
-        foreach (['Yii.php', 'BaseYii.php', 'classes.php'] as $file) {
-            file_put_contents($yiiDir . '/' . $file, <<<EOF
-<?php
-/**
- * This is a link provided by the ziphp/ziphp package via ziphp/zipper plugin.
- *
- * @link https://www.yiiframework.com/
- * @copyright Copyright (c) 2008 Yii Software LLC
- * @license https://www.yiiframework.com/license/
- */
-
-return require(__DIR__ . '/../ziphp/framework/$file');
-
-EOF
-            );
-        }
-    }
-
-    protected function removeBaseYiiFiles()
-    {
-        $yiiDir = $this->vendorDir . '/ziphp/ziphp/framework';
-        foreach (['Yii.php', 'BaseYii.php', 'classes.php'] as $file) {
-            if (file_exists($yiiDir . '/' . $file)) {
-                unlink($yiiDir . '/' . $file);
-            }
-        }
-        if (file_exists($yiiDir)) {
-            rmdir($yiiDir);
-        }
-    }
-
     /**
      * Special method to run tasks defined in `[extra][yii\composer\Installer::postCreateProject]` key in `composer.json`
      *

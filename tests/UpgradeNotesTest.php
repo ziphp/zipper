@@ -27,9 +27,9 @@ class UpgradeNotesTest extends TestCase
     {
         return [
             ['up', '2.0.12', '2.0.13', 'from version 2.0.12 to 2.0.13'],
-            ['up', '2.0.12', 'dev-master', 'from version 2.0.12 to dev-master'],
+            ['up', '2.0.12', 'dev-main', 'from version 2.0.12 to dev-main'],
             ['down', '2.0.14.1', '2.0.13', 'from version 2.0.14.1 to 2.0.13'],
-            ['down', 'dev-master', '2.0.13', 'from version dev-master to 2.0.13'],
+            ['down', 'dev-main', '2.0.13', 'from version dev-main to 2.0.13'],
         ];
     }
 
@@ -67,21 +67,21 @@ class UpgradeNotesTest extends TestCase
         ]]);
         $this->assertCount(1, $io->messages);
         if ($direction === 'up') {
-            if ($to === 'dev-master') {
-                $to = 'master';
+            if ($to === 'dev-main') {
+                $to = 'main';
             }
-            $this->assertContains("https://github.com/yiisoft/yii2/blob/$to/framework/UPGRADE.md", implode("\n", $io->messages));
+            $this->assertContains("https://github.com/ziphp/ziphp/blob/$to/framework/UPGRADE.md", implode("\n", $io->messages));
         } else {
-            if ($from === 'dev-master') {
-                $from = 'master';
+            if ($from === 'dev-main') {
+                $from = 'main';
             }
-            $this->assertContains("https://github.com/yiisoft/yii2/blob/$from/framework/UPGRADE.md", implode("\n", $io->messages));
+            $this->assertContains("https://github.com/ziphp/ziphp/blob/$from/framework/UPGRADE.md", implode("\n", $io->messages));
         }
     }
 
     public function testUpgradeNotes_brokenFile()
     {
-        $notes = $this->invokeMethod($this->getPlugin(), 'findUpgradeNotes', ['yiisoft/yii3', 'dev-master']);
+        $notes = $this->invokeMethod($this->getPlugin(), 'findUpgradeNotes', ['yiisoft/yii3', 'dev-main']);
         $this->assertFalse($notes);
     }
 
@@ -209,7 +209,7 @@ STRING
         $this->assertTrue($this->invokeMethod($plugin, 'isNumericVersion', ['2.1']));
         $this->assertTrue($this->invokeMethod($plugin, 'isNumericVersion', ['2.0']));
 
-        $this->assertFalse($this->invokeMethod($plugin, 'isNumericVersion', ['dev-master']));
+        $this->assertFalse($this->invokeMethod($plugin, 'isNumericVersion', ['dev-main']));
         $this->assertFalse($this->invokeMethod($plugin, 'isNumericVersion', ['dev-something']));
     }
 }
