@@ -1,4 +1,4 @@
-This directory contains scripts to run composer with the yii2-composer plugin.
+This directory contains scripts to run composer with the zipper plugin.
 
 ### Run the tests
 

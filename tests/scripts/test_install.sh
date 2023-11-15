@@ -9,7 +9,7 @@ php ../../make_composer_json.php composer.json << EOF
     "config": {
         "sort-packages": true,
         "allow-plugins": {
-            "yiisoft/yii2-composer": true
+            "ziphp/zipper": true
         }
     },
     "repositories": [
