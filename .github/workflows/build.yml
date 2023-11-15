@@ -19,25 +19,18 @@ jobs:
           - ubuntu-latest
 
         php:
-          - "5.4"
-          - "5.5"
-          - "5.6"
-          - "7.0"
-          - "7.1"
-          - "7.2"
-          - "7.3"
           - "7.4"
           - "8.0"
 
         composer:
-          - "dev-master"
+          - "dev-main"
 
     steps:
       - name: Configure git
         run: git config --global core.autocrlf false
 
       - name: Checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v4
 
       - name: Determine composer cache directory
         run: echo "COMPOSER_CACHE_DIR=$(composer config cache-dir)" >> $GITHUB_ENV
