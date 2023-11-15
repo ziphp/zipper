@@ -8,9 +8,6 @@ jobs:
   tests:
     name: PHP-${{ matrix.php }}-${{ matrix.os }}
 
-    env:
-      key: cache-v1
-
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -33,17 +30,6 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Determine composer cache directory
-        run: echo "COMPOSER_CACHE_DIR=$(composer config cache-dir)" >> $GITHUB_ENV
-
-      - name: Cache dependencies installed with composer
-        uses: actions/cache@v2
-        with:
-          path: ${{ env.COMPOSER_CACHE_DIR }}
-          key: php${{ matrix.php }}-composer-${{ hashFiles('**/composer.json') }}
-          restore-keys: |
-            php${{ matrix.php }}-composer-
 
       - name: Install composer
         run: composer require --dev "composer/composer:${{ matrix.composer }}" --update-with-dependencies
