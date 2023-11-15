@@ -8,8 +8,6 @@ php ../../make_composer_json.php composer.json << EOF
         "ziphp/ziphp": "^5.0",
         "cebe/markdown": "~1.0.0"
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "config": {
         "sort-packages": true,
         "allow-plugins": {
@@ -34,8 +32,6 @@ php ../../make_composer_json.php composer.json << EOF
         "ziphp/ziphp": "^5.0",
         "cebe/markdown": "~1.1"
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "config": {
         "sort-packages": true,
         "allow-plugins": {
