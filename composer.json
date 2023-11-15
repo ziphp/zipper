@@ -34,7 +34,7 @@
     "config": {
         "sort-packages": true,
         "allow-plugins": {
-            "yiisoft/yii2-composer": true
+            "ziphp/zipper": true
         }
     },
     "extra": {
