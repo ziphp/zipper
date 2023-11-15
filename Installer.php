@@ -22,7 +22,7 @@ use React\Promise\PromiseInterface;
 class Installer extends LibraryInstaller
 {
     const EXTRA_BOOTSTRAP = 'bootstrap';
-    const EXTENSION_FILE = 'yiisoft/extensions.php';
+    const EXTENSION_FILE = 'ziphp/extensions.php';
 
 
     /**
@@ -39,12 +39,8 @@ class Installer extends LibraryInstaller
     public function install(InstalledRepositoryInterface $repo, PackageInterface $package)
     {
         $afterInstall = function () use ($package) {
-            // add the package to yiisoft/extensions.php
+            // add the package to ziphp/extensions.php
             $this->addPackage($package);
-            // ensure the yii2-dev package also provides Yii.php in the same place as yii2 does
-            if ($package->getName() == 'yiisoft/yii2-dev') {
-                $this->linkBaseYiiFiles();
-            }
         };
 
         // install the package the normal composer way
@@ -67,10 +63,6 @@ class Installer extends LibraryInstaller
         $afterUpdate = function () use ($initial, $target) {
             $this->removePackage($initial);
             $this->addPackage($target);
-            // ensure the yii2-dev package also provides Yii.php in the same place as yii2 does
-            if ($initial->getName() == 'yiisoft/yii2-dev') {
-                $this->linkBaseYiiFiles();
-            }
         };
 
         // update the package the normal composer way
@@ -91,12 +83,8 @@ class Installer extends LibraryInstaller
     public function uninstall(InstalledRepositoryInterface $repo, PackageInterface $package)
     {
         $afterUninstall = function () use ($package) {
-            // remove the package from yiisoft/extensions.php
+            // remove the package from ziphp/extensions.php
             $this->removePackage($package);
-            // remove links for Yii.php
-            if ($package->getName() == 'yiisoft/yii2-dev') {
-                $this->removeBaseYiiFiles();
-            }
         };
 
         // uninstall the package the normal composer way
@@ -230,7 +218,7 @@ class Installer extends LibraryInstaller
 
     protected function linkBaseYiiFiles()
     {
-        $yiiDir = $this->vendorDir . '/yiisoft/yii2';
+        $yiiDir = $this->vendorDir . '/ziphp/ziphp/framework';
         if (!file_exists($yiiDir)) {
             mkdir($yiiDir, 0777, true);
         }
@@ -238,14 +226,14 @@ class Installer extends LibraryInstaller
             file_put_contents($yiiDir . '/' . $file, <<<EOF
 <?php
 /**
- * This is a link provided by the yiisoft/yii2-dev package via yii2-composer plugin.
+ * This is a link provided by the ziphp/ziphp package via ziphp/zipper plugin.
  *
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
 
-return require(__DIR__ . '/../yii2-dev/framework/$file');
+return require(__DIR__ . '/../ziphp/framework/$file');
 
 EOF
             );
@@ -254,7 +242,7 @@ EOF
 
     protected function removeBaseYiiFiles()
     {
-        $yiiDir = $this->vendorDir . '/yiisoft/yii2';
+        $yiiDir = $this->vendorDir . '/ziphp/ziphp/framework';
         foreach (['Yii.php', 'BaseYii.php', 'classes.php'] as $file) {
             if (file_exists($yiiDir . '/' . $file)) {
                 unlink($yiiDir . '/' . $file);

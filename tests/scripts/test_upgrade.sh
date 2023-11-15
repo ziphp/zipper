@@ -5,9 +5,11 @@ php ../../make_composer_json.php composer.json << EOF
 {
 
     "require": {
-        "yiisoft/yii2": "^2.0",
+        "ziphp/ziphp": "dev-main",
         "cebe/markdown": "~1.0.0"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "sort-packages": true,
         "allow-plugins": {
@@ -29,9 +31,11 @@ php ../../make_composer_json.php composer.json << EOF
 {
 
     "require": {
-        "yiisoft/yii2": "^2.0",
+        "ziphp/ziphp": "dev-main",
         "cebe/markdown": "~1.1"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "sort-packages": true,
         "allow-plugins": {

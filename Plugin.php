@@ -48,7 +48,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
         $this->_installer = new Installer($io, $composer);
         $composer->getInstallationManager()->addInstaller($this->_installer);
         $this->_vendorDir = rtrim($composer->getConfig()->get('vendor-dir'), '/');
-        $file = $this->_vendorDir . '/yiisoft/extensions.php';
+        $file = $this->_vendorDir . '/ziphp/extensions.php';
         if (!is_file($file)) {
             @mkdir(dirname($file), 0777, true);
             file_put_contents($file, "<?php\n\nreturn [];\n");
@@ -129,12 +129,12 @@ class Plugin implements PluginInterface, EventSubscriberInterface
      */
     public function showUpgradeNotes(Script\Event $event)
     {
-        $packageName = 'yiisoft/yii2';
+        $packageName = 'ziphp/ziphp';
         if (!isset($this->_packageUpdates[$packageName])) {
             return;
         }
 
-        $package = $this->_packageUpdates['yiisoft/yii2'];
+        $package = $this->_packageUpdates['ziphp/ziphp'];
 
         // do not show a notice on up/downgrades between dev versions
         // avoid messages like from version dev-master to dev-master
@@ -184,9 +184,9 @@ class Plugin implements PluginInterface, EventSubscriberInterface
         $maxVersion = $package['direction'] === 'up' ? $package['toPretty'] : $package['fromPretty'];
         // make sure to always show a valid link, even if $maxVersion is something like dev-master
         if (!$this->isNumericVersion($maxVersion)) {
-            $maxVersion = 'master';
+            $maxVersion = 'main';
         }
-        $io->write("  https://github.com/yiisoft/yii2/blob/$maxVersion/framework/UPGRADE.md\n");
+        $io->write("  https://github.com/ziphp/ziphp/blob/$maxVersion/framework/UPGRADE.md\n");
     }
 
     /**
