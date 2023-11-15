@@ -6,6 +6,12 @@ php ../../make_composer_json.php composer.json << EOF
     "require": {
         "yiisoft/yii2": "~2.0.16"
     },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true
+        }
+    },
     "repositories": [
         {
             "type": "composer",
