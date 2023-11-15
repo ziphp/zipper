@@ -219,10 +219,22 @@ class Plugin implements PluginInterface, EventSubscriberInterface
             $fromVersionMajor = $fromVersion;
         }
 
-        $upgradeFile = $this->_vendorDir . '/' . $packageName . '/UPGRADE.md';
-        if (!is_file($upgradeFile) || !is_readable($upgradeFile)) {
+
+        $upgradeFile = null;
+        foreach ([
+                     $this->_vendorDir . '/' . $packageName . '/UPGRADE.md',
+                     $this->_vendorDir . '/' . $packageName . '/framework/UPGRADE.md',
+                     $this->_vendorDir . '/' . $packageName . '/src/UPGRADE.md',
+                 ] as $_UPGRADE_md) {
+            if (is_file($_UPGRADE_md) && is_readable($_UPGRADE_md)) {
+                $upgradeFile = $_UPGRADE_md;
+            }
+        }
+
+        if (!$upgradeFile) {
             return false;
         }
+
         $lines = preg_split('~\R~', file_get_contents($upgradeFile));
         $relevantLines = [];
         $consuming = false;
